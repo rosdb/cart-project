@@ -25,18 +25,20 @@ function App() {
   useObservable(products$, setProducts);
 
   return products.length > 0 ? (
-    <>
-      <header className="bg-gray-800 text-white flex justify-between">
-        <span className="ml-20">Logo</span>
-        <span className="mr-20">Cart</span>
-      </header>
-      <h1 className="text-center text-6xl bg-gray-800 text-white mb-12">
-        Our Products
-      </h1>
-      <div className="flex justify-between">
-        <div className="bg-gray-200 ml-20 w-1/5">Search Filters</div>
-        <div className="container mr-20">
-          <div className="grid grid-cols-4 gap-5">
+    <div className="grid grid-cols-12 grid-rows-6">
+      <div className="grid col-start-1 col-end-13 row-start-1 row-end-2 bg-gray-800 text-white">
+        <span className="col-start-1 col-end-2 text-center">Logo</span>
+        <h1 className="col-start-2 col-end-12 text-6xl text-center">
+          Our Products
+        </h1>
+        <span className="col-start-12 col-end-13 text-center">Cart</span>
+      </div>
+      <div className="grid col-start-1 col-end-13 row-start-2 row-end-7 m-6">
+        <div className="bg-gray-200 col-start-1 col-end-3 m-4">
+          Search Filters
+        </div>
+        <div className="col-start-3 col-end-13 m-4">
+          <div className="grid grid-cols-4 gap-3">
             {products.map((product, index) => (
               <div key={index} className="flex flex-col">
                 <img
@@ -54,7 +56,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   ) : (
     <p className="text-center m-16">Loading...</p>
   );
