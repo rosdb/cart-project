@@ -15,8 +15,24 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={() => <ProductList products={products}/>} />
-        <Route path="/product/:id" render={({match}) => <Details match={match} />} />
+        <Route
+          exact
+          path="/"
+          render={() => <ProductList products={products} />}
+        />
+        <Route
+          path="/product/:id"
+          render={({ match }) => {
+            if (products.length > 0) {
+              const details = products.filter(
+                (product) => product.id.toString() === match.params.id
+              );
+              return <Details match={match} details={details} />;
+            } else {
+              return <p className="text-center m-16">Loading...</p>;
+            }
+          }}
+        />
         <Route exact path="/cart" render={() => <Cart />} />
       </Switch>
     </Router>

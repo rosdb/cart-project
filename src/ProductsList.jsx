@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 function ProductList({products}) {
@@ -21,8 +22,8 @@ function ProductList({products}) {
                 />
                 <span className="">{`$ ${product.price}`}</span>
                 <div className="flex justify-between">
-                  <button className="">Open details</button>
-                  <button className="">Add to cart</button>
+                  <Link to={`/product/${product.id}`}><button className="">Open details</button></Link>
+                  <Link to="/cart"><button className="">Add to cart</button></Link>
                 </div>
               </div>
             ))}
