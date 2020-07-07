@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useObservable, products$ } from "./utils";
+import Header from "./Header";
 
 function ProductList() {
   let [products, setProducts] = useState([]);
@@ -7,14 +8,8 @@ function ProductList() {
   useObservable(products$, setProducts);
 
   return products.length > 0 ? (
-    <div className="grid grid-cols-12 grid-rows-6">
-      <div className="grid col-start-1 col-end-13 row-start-1 row-end-2 bg-gray-800 text-white">
-        <span className="col-start-1 col-end-2 text-center">Logo</span>
-        <h1 className="col-start-2 col-end-12 text-6xl text-center">
-          Our Products
-        </h1>
-        <span className="col-start-12 col-end-13 text-center">Cart</span>
-      </div>
+    <>
+      <Header title="Our Products"/>
       <div className="grid col-start-1 col-end-13 row-start-2 row-end-7 m-6">
         <div className="bg-gray-200 col-start-1 col-end-3 m-4">
           Search Filters
@@ -38,7 +33,7 @@ function ProductList() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   ) : (
     <p className="text-center m-16">Loading...</p>
   );
