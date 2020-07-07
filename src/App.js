@@ -8,6 +8,7 @@ import Cart from "./Cart";
 function App() {
   /* State */
   let [products, setProducts] = useState([]);
+  let [cart, setCart] = useState([]);
 
   /* API call */
   useObservable(products$, setProducts);
@@ -18,7 +19,7 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => <ProductList products={products} />}
+          render={() => <ProductList products={products} addToCart={(p) => setCart([...cart, p])} />}
         />
         <Route
           path="/product/:id"
@@ -33,7 +34,7 @@ function App() {
             }
           }}
         />
-        <Route exact path="/cart" render={() => <Cart />} />
+        <Route exact path="/cart" render={() => <Cart cart={cart} />} />
       </Switch>
     </Router>
   );

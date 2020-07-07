@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
-function ProductList({products}) {
+function ProductList({products, addToCart}) {
   
   return products.length > 0 ? (
     <>
@@ -23,7 +23,7 @@ function ProductList({products}) {
                 <span className="">{`$ ${product.price}`}</span>
                 <div className="flex justify-between">
                   <Link to={`/product/${product.id}`}><button className="">Open details</button></Link>
-                  <Link to="/cart"><button className="">Add to cart</button></Link>
+                  <Link to="/cart"><button className="" onClick={() => addToCart(product)}>Add to cart</button></Link>
                 </div>
               </div>
             ))}

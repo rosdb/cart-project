@@ -12,7 +12,7 @@ function Details({match, details}) {
   return (
     <>
       <Header title="Product details"/>
-      <h3>ID prodotto: {id}</h3>
+      <h3 className="text-center">ID prodotto: {id}</h3>
     </>
   );
 }
