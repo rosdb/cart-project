@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import { useObservable, products$ } from "./utils";
+import React from "react";
 import Header from "./Header";
 
-function ProductList() {
-  let [products, setProducts] = useState([]);
-
-  useObservable(products$, setProducts);
-
+function ProductList({products}) {
+  
   return products.length > 0 ? (
     <>
       <Header title="Our Products"/>
