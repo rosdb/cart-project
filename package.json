@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "prettier": "prettier --write .",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -35,6 +36,8 @@
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "miragejs": "^0.1.40"
+    "miragejs": "^0.1.40",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "2.0.5"
   }
 }

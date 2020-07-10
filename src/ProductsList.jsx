@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import Header from './Header';
 
-function ProductList({ products, addToCart }) {
+function ProductList({products, addToCart}) {
   return products.length > 0 ? (
     <>
       <Header title="Our Products" />
