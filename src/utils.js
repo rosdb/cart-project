@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Observable } from "rxjs";
 
-export const useObservable = (observable, setter) => {
+export const useFetchedData = (observable, setter) => {
   useEffect(() => {
-    let subscription = observable.subscribe((value) => setter(value));
+    const subscription = observable.subscribe((value) => setter(value));
     return () => subscription.unsubscribe();
   }, [observable, setter]);
 };

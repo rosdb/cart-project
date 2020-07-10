@@ -1,12 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
-function ProductList({products, addToCart}) {
-  
+function ProductList({ products, addToCart }) {
   return products.length > 0 ? (
     <>
-      <Header title="Our Products"/>
+      <Header title="Our Products" />
       <div className="grid col-start-1 col-end-13 row-start-2 row-end-7 m-6">
         <div className="bg-gray-200 col-start-1 col-end-3 m-4">
           Search Filters
@@ -22,8 +22,14 @@ function ProductList({products, addToCart}) {
                 />
                 <span className="">{`$ ${product.price}`}</span>
                 <div className="flex justify-between">
-                  <Link to={`/product/${product.id}`}><button className="">Open details</button></Link>
-                  <Link to="/cart"><button className="" onClick={() => addToCart(product)}>Add to cart</button></Link>
+                  <Link to={`/product/${product.id}`}>
+                    <button className="">Open details</button>
+                  </Link>
+                  <Link to="/cart">
+                    <button className="" onClick={() => addToCart(product)}>
+                      Add to cart
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

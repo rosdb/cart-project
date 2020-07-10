@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useObservable, products$ } from "./utils";
+import { useFetchedData, products$ } from "./utils";
+import store from "./store";
 import ProductList from "./ProductsList";
 import Details from "./Details";
 import Cart from "./Cart";
 
 function App() {
-  /* State */
-  let [products, setProducts] = useState([]);
-  let [cart, setCart] = useState([]);
+  let [state, setState] = useState(store.initialState);
 
-  /* API call */
-  useObservable(products$, setProducts);
+  const { products, cart } = state;
+  const { setProducts, addToCart } = store;
+
+  useLayoutEffect(() => {
+    store.subscribe(setState);
+    store.init();
+  }, []);
+
+  useFetchedData(products$, setProducts);
 
   return (
     <Router>
@@ -19,7 +25,9 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => <ProductList products={products} addToCart={(p) => setCart([...cart, p])} />}
+          render={() => (
+            <ProductList products={products} addToCart={(p) => addToCart(p)} />
+          )}
         />
         <Route
           path="/product/:id"
