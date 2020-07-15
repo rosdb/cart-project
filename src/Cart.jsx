@@ -1,19 +1,24 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Header from './Header';
 
 function Cart({cart}) {
   return (
-    <>
-      <Header title="Cart" />
-
-      <h3 className="text-center">
-        Products IDs:{' '}
-        {cart.map(item => (
-          <p key={item.id}>{item.id}</p>
-        ))}
-      </h3>
-    </>
+    <div
+      className={
+        cart.length > 0
+          ? 'bg-gray-200 m-4 flex flex-col cart'
+          : 'bg-gray-200 m-4 flex flex-col cart hidden'
+      }
+    >
+      <h3 className="text-center">Cart</h3>
+      {cart.map(item => (
+        <div key={item.id} className="flex justify-between">
+          <span key={`${item.id}-name`}>{item.name}</span>
+          <span key={`${item.id}-price`}>{`$${item.price}`}</span>
+        </div>
+      ))}
+      {cart.length > 0 ? <button className="self-end">Checkout</button> : null}
+    </div>
   );
 }
 

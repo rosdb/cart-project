@@ -53,6 +53,54 @@ export default function () {
             name: 'Product Name',
             price: faker.commerce.price(),
             image: faker.image.image()
+          },
+          {
+            id: 9,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 10,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 11,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 12,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 13,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 14,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 15,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
+          },
+          {
+            id: 16,
+            name: 'Product Name',
+            price: faker.commerce.price(),
+            image: faker.image.image()
           }
         ]
       }));

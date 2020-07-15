@@ -2,9 +2,7 @@ import React, {useState, useLayoutEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {useFetchedData, products$} from './utils';
 import store from './store';
-import ProductList from './ProductsList';
-import Details from './Details';
-import Cart from './Cart';
+import Main from './Main';
 
 function App() {
   let [state, setState] = useState(store.initialState);
@@ -26,7 +24,11 @@ function App() {
           exact
           path="/"
           render={() => (
-            <ProductList products={products} addToCart={p => addToCart(p)} />
+            <Main
+              products={products}
+              addToCart={p => addToCart(p)}
+              cart={cart}
+            />
           )}
         />
         <Route
@@ -36,13 +38,19 @@ function App() {
               const details = products.filter(
                 product => product.id.toString() === match.params.id
               );
-              return <Details match={match} details={details} />;
+              return (
+                <Main
+                  match={match}
+                  details={details}
+                  addToCart={p => addToCart(p)}
+                  cart={cart}
+                />
+              );
             } else {
               return <p className="text-center m-16">Loading...</p>;
             }
           }}
         />
-        <Route exact path="/cart" render={() => <Cart cart={cart} />} />
       </Switch>
     </Router>
   );
