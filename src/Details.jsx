@@ -6,8 +6,6 @@ function Details({match, details}) {
 
   let {id} = match.params;
 
-  console.log('Details', details);
-
   return (
     <div className="m-4 list">
       <div className="flex flex-col">

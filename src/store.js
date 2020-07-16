@@ -5,7 +5,8 @@ const subject = new Subject();
 const initialState = {
   products: [],
   cart: [],
-  cartItemCount: 0
+  cartItemCount: 0,
+  totalPrice: 0
 };
 
 let state = initialState;
@@ -21,15 +22,28 @@ const store = {
     subject.next(state);
   },
   addToCart: product => {
+    product.qty = product.qty + 1 || 1;
     state = {
       ...state,
-      cart: [...state.cart, product],
-      cartItemCount: state.cartItemCount + 1
+      cart: state.cart.includes(product)
+        ? [...state.cart]
+        : [...state.cart, product],
+      cartItemCount: state.cartItemCount + 1,
+      totalPrice: state.totalPrice + Number(product.price)
     };
     subject.next(state);
   },
-  clearCart: () => {
-    state = {...state, cart: [], cartItemCount: 0};
+  removeToCart: product => {
+    product.qty = product.qty - 1 || 0;
+    state = {
+      ...state,
+      cart:
+        product.qty >= 1
+          ? [...state.cart]
+          : [...state.cart.filter(item => item !== product)],
+      cartItemCount: state.cartItemCount - 1,
+      totalPrice: state.totalPrice - Number(product.price)
+    };
     subject.next(state);
   },
   initialState

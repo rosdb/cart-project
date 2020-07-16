@@ -1,0 +1,27 @@
+.icon-box {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.icon {
+	height: 2.25rem;
+	width: 2.25rem;
+	fill: rgb(119, 119, 119);;
+}
+
+.notification {
+	font-size: 0.8rem;
+	font-weight: 700;
+	height: 1.5rem;
+	width: 1.5rem;
+	border-radius: 50%;
+	background-color: rgb(235, 47, 100);;
+	color: #fff;
+	position: absolute;
+	top: 1.5rem;
+	left: 2.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 function List({products, addToCart}) {
   return (
     <div className="m-4 list">
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-4 gap-3">
         {products.map((product, index) => (
           <div key={index} className="flex flex-col">
             <img
