@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './header.css';
 
-function Header({title, cartItemCount}) {
+function Header(props) {
+  const {title, cartItemCount, handleCart} = props;
   return (
     <div className="header">
       <div className="bg-gray-800 text-white flex justify-between">
@@ -29,9 +30,9 @@ function Header({title, cartItemCount}) {
           </Link>
         </span>
         <h1 className="text-6xl text-center">{title}</h1>
-        <div className="icon-box">
+        <div className="icon-box" onClick={() => handleCart()}>
           <svg
-            className="icon m-4"
+            className="icon m-4 cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"

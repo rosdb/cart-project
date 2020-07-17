@@ -6,27 +6,30 @@ import List from './List';
 import Cart from './Cart';
 import './grid.css';
 
-function Main({
-  products,
-  addToCart,
-  removeToCart,
-  match,
-  details,
-  cart,
-  cartItemCount,
-  totalPrice
-}) {
+function Main(props) {
+  const {
+    products,
+    addToCart,
+    removeToCart,
+    match,
+    details,
+    cart,
+    cartItemCount,
+    totalPrice,
+    handleCart,
+    cartView
+  } = props;
+
   return (
     <div
       className={
-        cart.length > 0
-          ? 'container-grid container-grid--open'
-          : 'container-grid'
+        !!cartView ? 'container-grid container-grid--open' : 'container-grid'
       }
     >
       <Header
         title={details ? 'Product details' : 'Our Products'}
         cartItemCount={cartItemCount}
+        handleCart={handleCart}
       />
       <div className="bg-gray-200 m-4 p-2 filters">
         <h3 className="text-center mb-4">Search Filters</h3>
@@ -36,7 +39,12 @@ function Main({
       ) : (
         <List products={products} addToCart={addToCart} />
       )}
-      <Cart cart={cart} removeToCart={removeToCart} totalPrice={totalPrice} />
+      <Cart
+        cart={cart}
+        removeToCart={removeToCart}
+        totalPrice={totalPrice}
+        cartView={cartView}
+      />
       <div className="footer">
         <div className="bg-gray-800 text-white h-32">
           <h1 className="text-center">Footer</h1>

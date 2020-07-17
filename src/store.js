@@ -6,7 +6,8 @@ const initialState = {
   products: [],
   cart: [],
   cartItemCount: 0,
-  totalPrice: 0
+  totalPrice: 0,
+  cartView: false
 };
 
 let state = initialState;
@@ -43,6 +44,13 @@ const store = {
           : [...state.cart.filter(item => item !== product)],
       cartItemCount: state.cartItemCount - 1,
       totalPrice: state.totalPrice - Number(product.price)
+    };
+    subject.next(state);
+  },
+  handleCart: () => {
+    state = {
+      ...state,
+      cartView: !state.cartView
     };
     subject.next(state);
   },

@@ -7,8 +7,8 @@ import Main from './Main';
 function App() {
   let [state, setState] = useState(store.initialState);
 
-  const {products, cart, cartItemCount, totalPrice} = state;
-  const {setProducts, addToCart, removeToCart} = store;
+  const {products, cart, cartItemCount, totalPrice, cartView} = state;
+  const {setProducts, addToCart, removeToCart, handleCart} = store;
 
   useLayoutEffect(() => {
     store.subscribe(setState);
@@ -31,6 +31,8 @@ function App() {
               cart={cart}
               cartItemCount={cartItemCount}
               totalPrice={totalPrice}
+              handleCart={() => handleCart()}
+              cartView={cartView}
             />
           )}
         />
@@ -50,6 +52,8 @@ function App() {
                   cart={cart}
                   cartItemCount={cartItemCount}
                   totalPrice={totalPrice}
+                  handleCart={() => handleCart()}
+                  cartView={cartView}
                 />
               );
             } else {
