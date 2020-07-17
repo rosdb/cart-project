@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Cart(props) {
   const {cart, removeToCart, totalPrice, cartView} = props;
@@ -12,8 +13,6 @@ function Cart(props) {
           : 'bg-gray-200 m-4 flex flex-col cart p-2 hidden'
       }
     >
-      <h3 className="text-center mb-4">Cart</h3>
-
       {cart.map(item => (
         <div className="flex flex-col" key={item.id}>
           <div className="flex justify-between items-center mb-2">
@@ -39,14 +38,36 @@ function Cart(props) {
                 ></path>
               </g>
             </svg>
-            <span>{item.name}</span>
+            <Link to={`/product/${item.id}`}>
+              <span>{item.name}</span>
+            </Link>
             <span>{`Qty ${item.qty}`}</span>
           </div>
-          <span className="self-end mb-2">{`$${item.price}`}</span>
+          <span className="self-end mb-3">{`$${item.price}`}</span>
         </div>
       ))}
-      <span className="self-end mb-4">Totale: {`$${totalPrice}`}</span>
-      <button className="self-end mb-6">Checkout</button>
+      <div className="text-center mb-6">
+        Total cart:
+        <span className="text-xl font-semibold">{` $${totalPrice}`}</span>
+      </div>
+      <div className="cursor-pointer self-center flex">
+        <span className="self-end p-1">Checkout</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          width="32px"
+          height="32px"
+          viewBox="0 0 32 32"
+        >
+          <g transform="translate(0, 0)">
+            <path
+              fill="#444444"
+              d="M30.707,15.293L21,5.586L19.586,7l8,8H1v2h26.586l-8,8L21,26.414l9.707-9.707 C31.098,16.316,31.098,15.684,30.707,15.293z"
+            ></path>
+          </g>
+        </svg>
+      </div>
     </div>
   );
 }
